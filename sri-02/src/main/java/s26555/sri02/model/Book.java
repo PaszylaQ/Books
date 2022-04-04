@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.time.LocalDate;
 import java.util.UUID;
 
 @Data
@@ -24,7 +23,7 @@ public class Book {
     String title;
     String author;
     String genre;
-    LocalDate releaseDate;
+    int releaseYear;
     int numberOfPages;
 
 }

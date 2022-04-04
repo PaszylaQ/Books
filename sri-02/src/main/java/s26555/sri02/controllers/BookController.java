@@ -20,8 +20,8 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("api/books")
 public class BookController {
-    private BookRepository _bookRepository;
-    private ModelMapper _modelMapper;
+    private final BookRepository _bookRepository;
+    private final ModelMapper _modelMapper;
 
     public BookController(BookRepository bookRepository, ModelMapper modelMapper) {
         this._bookRepository = bookRepository;
@@ -37,8 +37,14 @@ public class BookController {
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
+    @GetMapping("/count")
+    public ResponseEntity<Integer> getNumberOfBooks() {
+        List<Book> books = _bookRepository.findAll();
+        return new ResponseEntity<>(books.size(), HttpStatus.OK);
+    }
+
     @GetMapping("/{bookId}")
-    public ResponseEntity<BookDto> getEmployeeById(@PathVariable UUID bookId) {
+    public ResponseEntity<BookDto> getBookById(@PathVariable UUID bookId) {
         Optional<Book> book = _bookRepository.findById(bookId);
         if (book.isPresent()) {
             BookDto bookDto = convertToDto(book.get());

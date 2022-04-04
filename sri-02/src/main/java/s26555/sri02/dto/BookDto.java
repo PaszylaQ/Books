@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
 import java.util.UUID;
 
 @Data
@@ -15,6 +14,6 @@ public class BookDto {
     String title;
     String author;
     String genre;
-    LocalDate releaseDate;
+    int releaseYear;
     int numberOfPages;
 }
